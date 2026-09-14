@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NOCTURNE — Alta Joyería</title>
+<meta name="description" content="NOCTURNE. Joyería de alta gama forjada en la oscuridad y revelada por la luz. Anillos, collares, pulseras y aretes de edición limitada. [AGREGAR DESCRIPCIÓN DEFINITIVA]">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="NOCTURNE — Alta Joyería">
+<meta property="og:description" content="Una experiencia digital de lujo. Piezas forjadas en la oscuridad, reveladas por la luz.">
+<meta property="og:image" content="[AGREGAR URL DE IMAGEN OG]">
+<meta property="og:locale" content="es_ES">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  "name": "NOCTURNE",
+  "description": "Alta joyería de edición limitada.",
+  "image": "[AGREGAR URL DE IMAGEN]",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[AGREGAR DIRECCIÓN]",
+    "addressLocality": "[AGREGAR CIUDAD]",
+    "addressCountry": "[AGREGAR PAÍS]"
+  },
+  "telephone": "[AGREGAR TELÉFONO]",
+  "priceRange": "$$$"
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♦</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"><span class="cursor-label"></span></div>
+</div>
+
+<!-- ============ GRAIN / VIGNETTE OVERLAY ============ -->
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<!-- ============ INTRO / LOADER ============ -->
+<section id="intro" class="intro" role="presentation" aria-hidden="true">
+  <div class="intro-spark"></div>
+  <svg class="intro-jewel" viewBox="0 0 200 200" width="140" height="140">
+    <defs>
+      <radialGradient id="introGlow" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#F5E7B8"/>
+        <stop offset="45%" stop-color="#D4AF37"/>
+        <stop offset="100%" stop-color="#5c4712"/>
+      </radialGradient>
+    </defs>
+    <polygon points="100,20 140,70 120,180 80,180 60,70" fill="url(#introGlow)"/>
+    <polygon points="100,20 140,70 100,90 60,70" fill="#F5E7B8" opacity="0.55"/>
+  </svg>
+  <p class="intro-word" data-word="1">NOCTURNE</p>
+  <div class="intro-progress"><span></span></div>
+</section>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="NOCTURNE — Inicio">NOCTURNE</a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#coleccion">Colecciones</a>
+      <a href="#productos" data-cat="anillos">Anillos</a>
+      <a href="#productos" data-cat="collares">Collares</a>
+      <a href="#productos" data-cat="pulseras">Pulseras</a>
+      <a href="#productos" data-cat="aretes">Aretes</a>
+      <a href="#nosotros">Sobre Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchToggle" aria-haspopup="dialog" aria-controls="searchOverlay" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" id="cartToggle" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="#productos" class="btn btn-line nav-cta">Ver Colección</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú" inert>
+  <nav class="mobile-menu-links">
+    <a href="#coleccion">Colecciones</a>
+    <a href="#productos" data-cat="anillos">Anillos</a>
+    <a href="#productos" data-cat="collares">Collares</a>
+    <a href="#productos" data-cat="pulseras">Pulseras</a>
+    <a href="#productos" data-cat="aretes">Aretes</a>
+    <a href="#nosotros">Sobre Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <a href="#productos" class="btn btn-gold">Ver Colección</a>
+</div>
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar piezas" inert>
+  <button class="overlay-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
+  <form class="search-form" id="searchForm">
+    <input type="search" id="searchInput" placeholder="Buscar por nombre, colección o material…" autocomplete="off" aria-label="Buscar">
+    <span class="search-underline"></span>
+  </form>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="hero">
+  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+
+  <div class="hero-jewel-stage" id="jewelStage">
+   <div class="jewel-inner" id="jewelInner">
+    <svg class="hero-jewel" id="heroJewel" viewBox="0 0 400 400" role="img" aria-label="Anillo de oro con gema central, ilustración">
+      <defs>
+        <radialGradient id="goldGrad" cx="42%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#FCEFC0"/>
+          <stop offset="35%" stop-color="#D4AF37"/>
+          <stop offset="70%" stop-color="#9c7a1f"/>
+          <stop offset="100%" stop-color="#3d2f0c"/>
+        </radialGradient>
+        <radialGradient id="gemGrad" cx="38%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="30%" stop-color="#E5E5E5"/>
+          <stop offset="65%" stop-color="#8f9296"/>
+          <stop offset="100%" stop-color="#2a2b2d"/>
+        </radialGradient>
+        <filter id="softBlur"><feGaussianBlur stdDeviation="6"/></filter>
+      </defs>
+      <ellipse cx="200" cy="330" rx="130" ry="18" fill="#000" opacity="0.55" filter="url(#softBlur)"/>
+      <path d="M120 210 A80 80 0 1 0 280 210" fill="none" stroke="url(#goldGrad)" stroke-width="26"/>
+      <polygon class="jewel-gem" points="200,90 250,140 230,240 170,240 150,140" fill="url(#gemGrad)"/>
+      <polygon points="200,90 250,140 200,160 150,140" fill="#ffffff" opacity="0.65"/>
+      <polygon points="170,240 230,240 200,270" fill="#5a5c5f" opacity="0.8"/>
+    </svg>
+    <div class="jewel-sparkle s1"></div>
+    <div class="jewel-sparkle s2"></div>
+    <div class="jewel-sparkle s3"></div>
+   </div>
+  </div>
+
+  <div class="hero-copy">
+    <p class="hero-eyebrow" data-reveal>Alta Joyería · Edición Limitada</p>
+    <h1 class="hero-title">
+      <span class="line" data-line>NOCTURNE</span>
+    </h1>
+    <p class="hero-sub" data-reveal>El brillo no se explica. Se siente.</p>
+    <a href="#productos" class="btn btn-line hero-cta" data-reveal>Descubrir Colección</a>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span>Desliza</div>
+</section>
+
+<!-- ============ STORYTELLING 1 — LA NOCHE ============ -->
+<section class="story story-dark" data-chapter="01">
+  <span class="story-index">01 · La Noche</span>
+  <h2 class="story-text" data-split>
+    En la oscuridad más profunda,<br> solo el oro se atreve a hablar.
+  </h2>
+</section>
+
+<!-- ============ COLECCIÓN DESTACADA ============ -->
+<section id="coleccion" class="featured">
+  <header class="section-head">
+    <span class="section-kicker">Colección Destacada</span>
+    <h2 class="section-title">La pieza de la temporada</h2>
+  </header>
+
+  <div class="featured-stage">
+    <div class="featured-image" data-parallax-img>
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80"
+           onerror="this.closest('.featured-image').classList.add('img-fallback'); this.remove();"
+           alt="[REEMPLAZAR: fotografía editorial de la pieza destacada]" loading="lazy">
+      <span class="fallback-label">[AGREGAR FOTOGRAFÍA DE PRODUCTO]</span>
+    </div>
+    <div class="featured-copy">
+      <p class="eyebrow">Colección Eclipse</p>
+      <h3>El Anillo Solitario</h3>
+      <p class="muted">Oro [AGREGAR QUILATE] con gema central de [AGREGAR MATERIAL]. Tallado a mano, pieza única numerada.</p>
+      <p class="price">[AGREGAR PRECIO]</p>
+      <a href="#productos" class="btn btn-gold">Ver Pieza</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORYTELLING 2 — EL BRILLO ============ -->
+<section class="story story-glow" data-chapter="02">
+  <span class="story-index">02 · El Brillo</span>
+  <h2 class="story-text" data-split>
+    Cada reflejo es una promesa.<br> Cada sombra, un secreto.
+  </h2>
+</section>
+
+<!-- ============ PRODUCTOS ============ -->
+<section id="productos" class="products">
+  <header class="section-head">
+    <span class="section-kicker">La Colección</span>
+    <h2 class="section-title">Piezas para llevar la noche contigo</h2>
+
+    <div class="products-toolbar">
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab is-active" data-filter="todos">Todos</button>
+        <button class="filter-tab" data-filter="anillos">Anillos</button>
+        <button class="filter-tab" data-filter="collares">Collares</button>
+        <button class="filter-tab" data-filter="pulseras">Pulseras</button>
+        <button class="filter-tab" data-filter="aretes">Aretes</button>
+      </div>
+      <button class="btn btn-line filters-open" id="filtersOpen">Filtros</button>
+    </div>
+  </header>
+
+  <div class="product-gallery" id="productGallery" aria-live="polite">
+    <!-- rendered by js/products.js -->
+  </div>
+</section>
+
+<!-- ============ FILTER PANEL (drawer) ============ -->
+<aside class="filters-panel" id="filtersPanel" role="dialog" aria-modal="true" aria-label="Filtros" inert>
+  <div class="filters-head">
+    <h3>Filtros</h3>
+    <button class="overlay-close" id="filtersClose" aria-label="Cerrar filtros">&times;</button>
+  </div>
+
+  <div class="filter-group">
+    <h4>Categoría</h4>
+    <label><input type="checkbox" name="cat" value="anillos"> Anillos</label>
+    <label><input type="checkbox" name="cat" value="collares"> Collares</label>
+    <label><input type="checkbox" name="cat" value="pulseras"> Pulseras</label>
+    <label><input type="checkbox" name="cat" value="aretes"> Aretes</label>
+  </div>
+
+  <div class="filter-group">
+    <h4>Material</h4>
+    <label><input type="checkbox" name="mat" value="oro-amarillo"> Oro Amarillo</label>
+    <label><input type="checkbox" name="mat" value="oro-blanco"> Oro Blanco</label>
+    <label><input type="checkbox" name="mat" value="plata"> Plata</label>
+    <label><input type="checkbox" name="mat" value="diamante"> Diamante</label>
+  </div>
+
+  <div class="filter-group">
+    <h4>Colección</h4>
+    <label><input type="checkbox" name="col" value="eclipse"> Eclipse</label>
+    <label><input type="checkbox" name="col" value="medianoche"> Medianoche</label>
+    <label><input type="checkbox" name="col" value="ascua"> Ascua</label>
+  </div>
+
+  <div class="filter-group">
+    <h4>Precio</h4>
+    <p class="muted small">[AGREGAR RANGOS DE PRECIO REALES]</p>
+  </div>
+
+  <div class="filter-group">
+    <h4>Disponibilidad</h4>
+    <label><input type="checkbox" name="stock" value="disponible"> Disponible</label>
+    <label><input type="checkbox" name="stock" value="agotado"> Agotado</label>
+  </div>
+
+  <button class="btn btn-gold filters-apply" id="filtersApply">Aplicar Filtros</button>
+  <button class="btn-text filters-clear" id="filtersClear">Limpiar todo</button>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<!-- ============ CART DRAWER ============ -->
+<aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-label="Carrito" inert>
+  <div class="filters-head">
+    <h3>Tu Carrito</h3>
+    <button class="overlay-close" id="cartClose" aria-label="Cerrar carrito">&times;</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <p class="cart-empty" id="cartEmpty">Tu carrito está vacío. Descubre una pieza que te espere.</p>
+  </div>
+
+  <div class="cart-summary" id="cartSummary" hidden>
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">[AGREGAR PRECIO]</span>
+    </div>
+    <p class="muted small">Envío e impuestos calculados en el siguiente paso. [AGREGAR INFORMACIÓN DE ENVÍO]</p>
+    <button class="btn btn-gold cart-checkout" id="cartCheckout">Finalizar Compra</button>
+    <p class="muted small cart-note">Carrito de demostración — sin pagos reales. [PENDIENTE: integrar pasarela de pago e inventario]</p>
+  </div>
+</aside>
+<div class="scrim" id="cartScrim"></div>
+
+<!-- ============ STORYTELLING 3 — LA ARTESANÍA ============ -->
+<section class="story story-dark" data-chapter="03">
+  <span class="story-index">03 · La Artesanía</span>
+  <h2 class="story-text" data-split>
+    Antes de ser joya,<br> fue fuego, tiempo y manos expertas.
+  </h2>
+</section>
+
+<!-- ============ ARTESANÍA / PROCESO ============ -->
+<section id="artesania" class="craft">
+  <header class="section-head light">
+    <span class="section-kicker">El Proceso</span>
+    <h2 class="section-title">De la materia a la obra</h2>
+  </header>
+
+  <ol class="craft-steps">
+    <li class="craft-step">
+      <span class="craft-num">01</span>
+      <div class="craft-media" data-parallax-img>
+        <img src="https://images.unsplash.com/photo-1610375461369-d613b564f4c4?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.closest('.craft-media').classList.add('img-fallback'); this.remove();"
+             alt="[REEMPLAZAR: materia prima, oro y gemas]" loading="lazy">
+        <span class="fallback-label">[AGREGAR FOTO: MATERIAL]</span>
+      </div>
+      <h3>Material</h3>
+      <p class="muted">Seleccionamos [AGREGAR ORIGEN DE MATERIALES] con trazabilidad verificada.</p>
+    </li>
+    <li class="craft-step">
+      <span class="craft-num">02</span>
+      <div class="craft-media" data-parallax-img>
+        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.closest('.craft-media').classList.add('img-fallback'); this.remove();"
+             alt="[REEMPLAZAR: bocetos de diseño]" loading="lazy">
+        <span class="fallback-label">[AGREGAR FOTO: DISEÑO]</span>
+      </div>
+      <h3>Diseño</h3>
+      <p class="muted">Cada pieza nace como boceto antes de tomar forma en cera y metal.</p>
+    </li>
+    <li class="craft-step">
+      <span class="craft-num">03</span>
+      <div class="craft-media" data-parallax-img>
+        <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.closest('.craft-media').classList.add('img-fallback'); this.remove();"
+             alt="[REEMPLAZAR: fabricación artesanal]" loading="lazy">
+        <span class="fallback-label">[AGREGAR FOTO: FABRICACIÓN]</span>
+      </div>
+      <h3>Fabricación</h3>
+      <p class="muted">Fundición, engaste y pulido, realizados a mano por [AGREGAR TALLER/MAESTRO JOYERO].</p>
+    </li>
+    <li class="craft-step">
+      <span class="craft-num">04</span>
+      <div class="craft-media" data-parallax-img>
+        <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.closest('.craft-media').classList.add('img-fallback'); this.remove();"
+             alt="[REEMPLAZAR: detalle macro de la pieza]" loading="lazy">
+        <span class="fallback-label">[AGREGAR FOTO: DETALLE]</span>
+      </div>
+      <h3>Detalle</h3>
+      <p class="muted">El engaste final se revisa milímetro a milímetro bajo luz controlada.</p>
+    </li>
+    <li class="craft-step">
+      <span class="craft-num">05</span>
+      <div class="craft-media" data-parallax-img>
+        <img src="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.closest('.craft-media').classList.add('img-fallback'); this.remove();"
+             alt="[REEMPLAZAR: pieza final terminada]" loading="lazy">
+        <span class="fallback-label">[AGREGAR FOTO: PIEZA FINAL]</span>
+      </div>
+      <h3>Pieza Final</h3>
+      <p class="muted">Lista para comenzar una nueva historia.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ STORYTELLING 4 — LA COLECCIÓN ============ -->
+<section class="story story-red" data-chapter="04">
+  <span class="story-index">04 · La Colección</span>
+  <h2 class="story-text" data-split>
+    No coleccionamos joyas.<br> Coleccionamos instantes.
+  </h2>
+</section>
+
+<!-- ============ LOOKBOOK ============ -->
+<section id="lookbook" class="lookbook">
+  <header class="section-head">
+    <span class="section-kicker">Lookbook</span>
+    <h2 class="section-title">Puesta. Vivida. Real.</h2>
+  </header>
+
+  <div class="lookbook-grid">
+    <figure class="lookbook-item lb-lg" data-parallax-img>
+      <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80"
+           onerror="this.closest('.lookbook-item').classList.add('img-fallback'); this.remove();"
+           alt="[REEMPLAZAR: collar puesto sobre cuello]" loading="lazy">
+      <span class="fallback-label">[AGREGAR FOTO EDITORIAL]</span>
+    </figure>
+    <figure class="lookbook-item" data-parallax-img>
+      <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80"
+           onerror="this.closest('.lookbook-item').classList.add('img-fallback'); this.remove();"
+           alt="[REEMPLAZAR: anillo en mano]" loading="lazy">
+      <span class="fallback-label">[AGREGAR FOTO EDITORIAL]</span>
+    </figure>
+    <figure class="lookbook-item" data-parallax-img>
+      <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?auto=format&fit=crop&w=900&q=80"
+           onerror="this.closest('.lookbook-item').classList.add('img-fallback'); this.remove();"
+           alt="[REEMPLAZAR: aretes en oreja]" loading="lazy">
+      <span class="fallback-label">[AGREGAR FOTO EDITORIAL]</span>
+    </figure>
+    <figure class="lookbook-item lb-wide" data-parallax-img>
+      <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1400&q=80"
+           onerror="this.closest('.lookbook-item').classList.add('img-fallback'); this.remove();"
+           alt="[REEMPLAZAR: composición editorial de joyería]" loading="lazy">
+      <span class="fallback-label">[AGREGAR FOTO EDITORIAL]</span>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ COLECCIONES ============ -->
+<section class="collections">
+  <header class="section-head">
+    <span class="section-kicker">Explorar</span>
+    <h2 class="section-title">Nuestras Colecciones</h2>
+  </header>
+  <div class="collections-row">
+    <a href="#productos" class="collection-card" data-cat="anillos">
+      <span class="collection-name">Anillos</span>
+      <span class="collection-arrow">→</span>
+    </a>
+    <a href="#productos" class="collection-card" data-cat="collares">
+      <span class="collection-name">Collares</span>
+      <span class="collection-arrow">→</span>
+    </a>
+    <a href="#productos" class="collection-card" data-cat="pulseras">
+      <span class="collection-name">Pulseras</span>
+      <span class="collection-arrow">→</span>
+    </a>
+    <a href="#productos" class="collection-card" data-cat="aretes">
+      <span class="collection-name">Aretes</span>
+      <span class="collection-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section class="reviews">
+  <header class="section-head">
+    <span class="section-kicker">Confianza</span>
+    <h2 class="section-title">Lo que dicen quienes ya viven NOCTURNE</h2>
+    <p class="muted small placeholder-note">Las reseñas mostradas son marcadores de posición. [AGREGAR RESEÑAS REALES DE CLIENTES]</p>
+  </header>
+
+  <div class="reviews-row">
+    <blockquote class="review-card">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p>"[AGREGAR RESEÑA REAL DEL CLIENTE]"</p>
+      <cite>— [Nombre del cliente]</cite>
+    </blockquote>
+    <blockquote class="review-card">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p>"[AGREGAR RESEÑA REAL DEL CLIENTE]"</p>
+      <cite>— [Nombre del cliente]</cite>
+    </blockquote>
+    <blockquote class="review-card">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p>"[AGREGAR RESEÑA REAL DEL CLIENTE]"</p>
+      <cite>— [Nombre del cliente]</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ SOBRE NOSOTROS ============ -->
+<section id="nosotros" class="about">
+  <div class="about-media" data-parallax-img>
+    <img src="https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=1200&q=80"
+         onerror="this.closest('.about-media').classList.add('img-fallback'); this.remove();"
+         alt="[REEMPLAZAR: taller o atelier de la joyería]" loading="lazy">
+    <span class="fallback-label">[AGREGAR FOTO DEL ATELIER]</span>
+  </div>
+  <div class="about-copy">
+    <span class="section-kicker">Sobre Nosotros</span>
+    <h2>No hacemos joyas.<br>Guardamos instantes en metal.</h2>
+    <p class="muted">[AGREGAR HISTORIA DE LA MARCA: origen, fundadores, año de inicio, filosofía de diseño.]</p>
+    <p class="muted">[AGREGAR VALORES: artesanía, sostenibilidad, origen de materiales, compromiso con el cliente.]</p>
+    <a href="#contacto" class="btn btn-line">Conocer Más</a>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="contacto" class="cta-final">
+  <h2 class="cta-title" data-split>Encuentra la pieza<br>que te estaba esperando.</h2>
+  <div class="cta-actions">
+    <a href="#productos" class="btn btn-gold">Ver Colección</a>
+    <a href="mailto:[AGREGAR EMAIL]" class="btn btn-line">Contactar</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <span class="footer-logo">NOCTURNE</span>
+    <nav class="footer-links" aria-label="Enlaces de footer">
+      <div class="footer-col">
+        <h5>Colecciones</h5>
+        <a href="#productos" data-cat="anillos">Anillos</a>
+        <a href="#productos" data-cat="collares">Collares</a>
+        <a href="#productos" data-cat="pulseras">Pulseras</a>
+        <a href="#productos" data-cat="aretes">Aretes</a>
+      </div>
+      <div class="footer-col">
+        <h5>Marca</h5>
+        <a href="#nosotros">Sobre Nosotros</a>
+        <a href="#artesania">Artesanía</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h5>Ayuda</h5>
+        <a href="#">Guía de Tallas [AGREGAR]</a>
+        <a href="#">Cuidado de Piezas [AGREGAR]</a>
+        <a href="#">Envíos [AGREGAR]</a>
+        <a href="#">Devoluciones [AGREGAR]</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <a href="mailto:[AGREGAR EMAIL]">[AGREGAR EMAIL]</a>
+        <a href="tel:[AGREGAR TELÉFONO]">[AGREGAR TELÉFONO]</a>
+        <span class="muted small">[AGREGAR DIRECCIÓN]</span>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> NOCTURNE. Todos los derechos reservados.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">[IG]</a>
+      <a href="#" aria-label="Pinterest">[PIN]</a>
+      <a href="#" aria-label="WhatsApp">[WA]</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Product Quick-view Modal -->
+<div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Detalle de pieza" inert>
+  <div class="product-modal-inner">
+    <button class="overlay-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    <div class="modal-media">
+      <img id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-info">
+      <p class="eyebrow" id="modalCollection"></p>
+      <h3 id="modalName"></h3>
+      <p class="muted" id="modalMaterial"></p>
+      <p class="price" id="modalPrice"></p>
+      <p class="stock" id="modalStock"></p>
+      <button class="btn btn-gold" id="modalAddCart">Añadir al Carrito</button>
+      <details class="modal-details">
+        <summary>Cuidado de la pieza</summary>
+        <p class="muted small">[AGREGAR INFORMACIÓN DE CUIDADO]</p>
+      </details>
+      <details class="modal-details">
+        <summary>Envío</summary>
+        <p class="muted small">[AGREGAR INFORMACIÓN DE ENVÍO]</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
+
+<script src="js/main.js" defer></script>
+<script src="js/products.js" defer></script>
+<script src="js/navigation.js" defer></script>
+<script src="js/interactions.js" defer></script>
+<script src="js/gallery.js" defer></script>
+<script src="js/animations.js" defer></script>
+</body>
+</html>
