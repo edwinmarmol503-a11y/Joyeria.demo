@@ -3,34 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>NOCTURNE — Alta Joyería</title>
-<meta name="description" content="NOCTURNE. Joyería de alta gama forjada en la oscuridad y revelada por la luz. Anillos, collares, pulseras y aretes de edición limitada. [AGREGAR DESCRIPCIÓN DEFINITIVA]">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="NOCTURNE — Alta Joyería">
-<meta property="og:description" content="Una experiencia digital de lujo. Piezas forjadas en la oscuridad, reveladas por la luz.">
-<meta property="og:image" content="[AGREGAR URL DE IMAGEN OG]">
-<meta property="og:locale" content="es_ES">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "JewelryStore",
-  "name": "NOCTURNE",
-  "description": "Alta joyería de edición limitada.",
-  "image": "[AGREGAR URL DE IMAGEN]",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "[AGREGAR DIRECCIÓN]",
-    "addressLocality": "[AGREGAR CIUDAD]",
-    "addressCountry": "[AGREGAR PAÍS]"
-  },
-  "telephone": "[AGREGAR TELÉFONO]",
-  "priceRange": "$$$"
-}
-</script>
+<title>Guía de Tallas — NOCTURNE</title>
+<meta name="description" content="Cómo medir tu talla de anillo, pulsera y collar antes de comprar en NOCTURNE.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♦</text></svg>">
 
@@ -46,17 +20,14 @@
 
 <a class="skip-link" href="#main">Saltar al contenido</a>
 
-<!-- ============ CUSTOM CURSOR ============ -->
 <div class="cursor" aria-hidden="true">
   <div class="cursor-dot"></div>
   <div class="cursor-ring"><span class="cursor-label"></span></div>
 </div>
 
-<!-- ============ GRAIN / VIGNETTE OVERLAY ============ -->
 <div class="grain-overlay" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 
-<!-- ============ CROSS-PAGE TRANSITION LOADER ============ -->
 <div class="page-transition" id="pageTransition" aria-hidden="true">
   <svg class="page-transition-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
     <path d="M12 2 L19 9 L12 22 L5 9 Z"/><path d="M5 9 H19"/><path d="M9 2 L12 9 L15 2"/>
@@ -64,29 +35,9 @@
   <p class="page-transition-word">Nocturne</p>
 </div>
 
-<!-- ============ INTRO / LOADER (first visit only) ============ -->
-<section id="intro" class="intro" role="presentation" aria-hidden="true">
-  <div class="intro-spark"></div>
-  <svg class="intro-jewel" viewBox="0 0 200 200" width="140" height="140">
-    <defs>
-      <radialGradient id="introGlow" cx="50%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#F5E7B8"/>
-        <stop offset="45%" stop-color="#D4AF37"/>
-        <stop offset="100%" stop-color="#5c4712"/>
-      </radialGradient>
-    </defs>
-    <polygon points="100,20 140,70 120,180 80,180 60,70" fill="url(#introGlow)"/>
-    <polygon points="100,20 140,70 100,90 60,70" fill="#F5E7B8" opacity="0.55"/>
-  </svg>
-  <p class="intro-word" data-word="1">NOCTURNE</p>
-  <div class="intro-progress"><span></span></div>
-</section>
-
-<!-- ============ NAVIGATION ============ -->
 <header class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="NOCTURNE — Inicio">NOCTURNE</a>
-
     <nav class="nav-links" aria-label="Navegación principal">
       <a href="colecciones.html">Colecciones</a>
       <a href="colecciones.html?cat=anillos">Anillos</a>
@@ -96,7 +47,6 @@
       <a href="nosotros.html">Sobre Nosotros</a>
       <a href="contacto.html">Contacto</a>
     </nav>
-
     <div class="nav-actions">
       <button class="icon-btn" id="searchToggle" aria-haspopup="dialog" aria-controls="searchOverlay" aria-label="Buscar">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -113,7 +63,6 @@
   </div>
 </header>
 
-<!-- ============ MOBILE MENU ============ -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menú" inert>
   <nav class="mobile-menu-links">
     <a href="colecciones.html">Colecciones</a>
@@ -127,7 +76,6 @@
   <a href="colecciones.html" class="btn btn-gold">Ver Colección</a>
 </div>
 
-<!-- ============ SEARCH OVERLAY ============ -->
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Buscar piezas" inert>
   <button class="overlay-close" id="searchClose" aria-label="Cerrar búsqueda">&times;</button>
   <form class="search-form" id="searchForm">
@@ -138,7 +86,6 @@
   <p class="muted small search-hint">La búsqueda completa vive en <a href="colecciones.html">Colecciones</a>.</p>
 </div>
 
-<!-- ============ CART DRAWER ============ -->
 <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-label="Carrito" inert>
   <div class="filters-head">
     <h3>Tu Carrito</h3>
@@ -161,96 +108,50 @@
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<section id="hero" class="hero">
-  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+<header class="page-header">
+  <span class="section-kicker">Ayuda</span>
+  <h1>Guía de Tallas</h1>
+  <p>Mide en casa con precisión antes de elegir tu pieza.</p>
+</header>
 
-  <div class="hero-jewel-stage" id="jewelStage">
-   <div class="jewel-inner" id="jewelInner">
-    <svg class="hero-jewel" id="heroJewel" viewBox="0 0 400 400" role="img" aria-label="Anillo de oro con gema central, ilustración">
-      <defs>
-        <radialGradient id="goldGrad" cx="42%" cy="30%" r="70%">
-          <stop offset="0%" stop-color="#FCEFC0"/>
-          <stop offset="35%" stop-color="#D4AF37"/>
-          <stop offset="70%" stop-color="#9c7a1f"/>
-          <stop offset="100%" stop-color="#3d2f0c"/>
-        </radialGradient>
-        <radialGradient id="gemGrad" cx="38%" cy="30%" r="75%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="30%" stop-color="#E5E5E5"/>
-          <stop offset="65%" stop-color="#8f9296"/>
-          <stop offset="100%" stop-color="#2a2b2d"/>
-        </radialGradient>
-        <filter id="softBlur"><feGaussianBlur stdDeviation="6"/></filter>
-      </defs>
-      <ellipse cx="200" cy="330" rx="130" ry="18" fill="#000" opacity="0.55" filter="url(#softBlur)"/>
-      <path d="M120 210 A80 80 0 1 0 280 210" fill="none" stroke="url(#goldGrad)" stroke-width="26"/>
-      <polygon class="jewel-gem" points="200,90 250,140 230,240 170,240 150,140" fill="url(#gemGrad)"/>
-      <polygon points="200,90 250,140 200,160 150,140" fill="#ffffff" opacity="0.65"/>
-      <polygon points="170,240 230,240 200,270" fill="#5a5c5f" opacity="0.8"/>
-    </svg>
-    <div class="jewel-sparkle s1"></div>
-    <div class="jewel-sparkle s2"></div>
-    <div class="jewel-sparkle s3"></div>
-   </div>
-  </div>
+<article class="help-content">
+  <h2>Anillos</h2>
+  <p>La forma más confiable de medir tu talla en casa es con un hilo o una tira de papel:</p>
+  <ol>
+    <li>Envuelve el hilo alrededor de la base del dedo donde usarás el anillo.</li>
+    <li>Marca el punto donde el hilo se superpone y mide esa longitud con una regla (en milímetros).</li>
+    <li>Ese número es tu circunferencia de dedo; compáralo con la tabla de referencia a continuación.</li>
+  </ol>
+  <p>Mide al final del día, cuando los dedos suelen estar ligeramente más dilatados, y evita medir con las manos frías.</p>
 
-  <div class="hero-copy">
-    <p class="hero-eyebrow" data-reveal>Alta Joyería · Edición Limitada</p>
-    <h1 class="hero-title">
-      <span class="line" data-line>NOCTURNE</span>
-    </h1>
-    <p class="hero-sub" data-reveal>El brillo no se explica. Se siente.</p>
-    <a href="colecciones.html" class="btn btn-line hero-cta" data-reveal>Descubrir Colección</a>
-  </div>
+  <table>
+    <thead>
+      <tr><th>Circunferencia (mm)</th><th>Diámetro (mm)</th><th>Talla EU</th><th>Talla US</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>46.8</td><td>14.9</td><td>47</td><td>4</td></tr>
+      <tr><td>49.3</td><td>15.7</td><td>49</td><td>5</td></tr>
+      <tr><td>51.9</td><td>16.5</td><td>52</td><td>6</td></tr>
+      <tr><td>54.4</td><td>17.3</td><td>54</td><td>7</td></tr>
+      <tr><td>56.9</td><td>18.1</td><td>57</td><td>8</td></tr>
+      <tr><td>59.5</td><td>18.9</td><td>60</td><td>9</td></tr>
+    </tbody>
+  </table>
+  <p class="help-note">Tabla de referencia aproximada — los sistemas de tallas varían ligeramente entre fabricantes. [AGREGAR TABLA DE TALLAS OFICIAL DE NOCTURNE SI DIFIERE]</p>
 
-  <div class="scroll-cue" aria-hidden="true"><span></span>Desliza</div>
-</section>
+  <h2>Pulseras</h2>
+  <p>Mide tu muñeca con una cinta métrica flexible (o un hilo, midiendo luego con una regla) justo debajo del hueso de la muñeca. Para un ajuste holgado, suma entre 1 y 2 centímetros a esa medida.</p>
 
-<!-- ============ STORYTELLING — EL BRILLO ============ -->
-<section class="story story-glow" data-chapter="01">
-  <span class="story-index">El Brillo</span>
-  <h2 class="story-text" data-split>
-    Cada reflejo es una promesa.<br> Cada sombra, un secreto.
-  </h2>
-</section>
+  <h2>Collares</h2>
+  <p>La longitud ideal depende de dónde quieras que caiga el colgante: a la altura de la clavícula (corto), del escote (medio) o más abajo (largo). Si tienes un collar que te quede bien, mídelo de extremo a extremo como referencia.</p>
 
-<!-- ============ COLECCIÓN DESTACADA ============ -->
-<section id="coleccion" class="featured">
-  <header class="section-head">
-    <span class="section-kicker">Colección Destacada</span>
-    <h2 class="section-title">La pieza de la temporada</h2>
-  </header>
-
-  <div class="featured-stage">
-    <div class="featured-image" data-parallax-img>
-      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80"
-           onerror="this.closest('.featured-image').classList.add('img-fallback'); this.remove();"
-           alt="[REEMPLAZAR: fotografía editorial de la pieza destacada]" loading="lazy">
-      <span class="fallback-label">[AGREGAR FOTOGRAFÍA DE PRODUCTO]</span>
-    </div>
-    <div class="featured-copy">
-      <p class="eyebrow">Colección Eclipse</p>
-      <h3>El Anillo Solitario</h3>
-      <p class="muted">Oro [AGREGAR QUILATE] con gema central de [AGREGAR MATERIAL]. Tallado a mano, pieza única numerada.</p>
-      <p class="price">[AGREGAR PRECIO]</p>
-      <a href="colecciones.html" class="btn btn-gold">Ver Pieza</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA FINAL ============ -->
-<section class="cta-final">
-  <h2 class="cta-title" data-split>Encuentra la pieza<br>que te estaba esperando.</h2>
-  <div class="cta-actions">
-    <a href="colecciones.html" class="btn btn-gold">Ver Colección</a>
-    <a href="contacto.html" class="btn btn-line">Contactar</a>
-  </div>
-</section>
+  <h2>¿Aún no estás seguro?</h2>
+  <p>Escríbenos antes de comprar — podemos ayudarte a confirmar tu talla o coordinar un ajuste. [AGREGAR SI SE OFRECE AJUSTE DE TALLA GRATUITO O CON COSTO]</p>
+  <a href="contacto.html" class="btn btn-line help-back">Contactar para ayuda con tallas</a>
+</article>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="footer-top">
     <span class="footer-logo">NOCTURNE</span>

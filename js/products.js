@@ -1,7 +1,8 @@
 /* ==========================================================================
-   PRODUCTS.JS — product data, editorial gallery render, filtering, quick-view
-   Images: free-license stock placeholders (Unsplash). Replace with real
-   product photography before launch — see fallback labels in the UI.
+   PRODUCTS.JS — product catalog, editorial gallery render, filtering, quick-view
+   Loads only on colecciones.html. Cart state lives in cart.js (shared,
+   persisted across pages). Images are free-license stock placeholders
+   (Unsplash) — replace with real product photography before launch.
    ========================================================================== */
 
 window.NOCTURNE = window.NOCTURNE || {};
@@ -59,10 +60,6 @@ window.NOCTURNE.products = [
 
 const sizeToClass = { md: '', lg: 'size-lg', xl: 'size-xl' };
 
-function priceLabel(p) {
-  return p.price ? `$${p.price.toLocaleString('es')}` : '[AGREGAR PRECIO]';
-}
-
 function productCardHTML(p) {
   const sizeClass = sizeToClass[p.size] || '';
   return `
@@ -109,6 +106,15 @@ function applyCategoryFilter(cat) {
   });
 }
 
+function setActiveFilterTab(cat) {
+  const tabs = document.getElementById('filterTabs');
+  if (!tabs) return;
+  const tab = tabs.querySelector(`.filter-tab[data-filter="${cat}"]`) || tabs.querySelector('.filter-tab[data-filter="todos"]');
+  tabs.querySelectorAll('.filter-tab').forEach((t) => t.classList.remove('is-active'));
+  tab.classList.add('is-active');
+  applyCategoryFilter(tab.dataset.filter);
+}
+
 function initFilterTabs() {
   const tabs = document.getElementById('filterTabs');
   if (!tabs) return;
@@ -120,14 +126,18 @@ function initFilterTabs() {
     applyCategoryFilter(btn.dataset.filter);
   });
 
-  // Nav links / collection cards with data-cat jump + filter
+  // In-page collection cards (data-cat) filter instantly instead of navigating
   document.querySelectorAll('[data-cat]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const cat = link.dataset.cat;
-      const tab = tabs.querySelector(`.filter-tab[data-filter="${cat}"]`);
-      if (tab) tab.click();
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      setActiveFilterTab(link.dataset.cat);
+      document.getElementById('productos')?.scrollIntoView({ behavior: NOCTURNE.prefersReducedMotion ? 'auto' : 'smooth' });
     });
   });
+
+  // Pre-select category from ?cat= query string (arriving from another page)
+  const catParam = new URLSearchParams(window.location.search).get('cat');
+  if (catParam) setActiveFilterTab(catParam);
 }
 
 /* ---------- Advanced filter panel (checkboxes) ---------- */
@@ -197,114 +207,10 @@ function closeProductModal() {
   document.body.style.overflow = '';
 }
 
-/* ---------- Cart (visual only — no real payments/inventory) ---------- */
-NOCTURNE.cart = [];
-
-function addToCart(p) {
-  NOCTURNE.cart.push(p);
-  updateCartCount();
-  renderCartPanel();
-  showToast(`${p.name} añadido al carrito`);
-}
-
-function removeFromCart(id) {
-  const idx = NOCTURNE.cart.findIndex((item) => item.id === id);
-  if (idx > -1) NOCTURNE.cart.splice(idx, 1);
-  updateCartCount();
-  renderCartPanel();
-}
-
-function updateCartCount() {
-  const countEl = document.getElementById('cartCount');
-  if (countEl) countEl.textContent = NOCTURNE.cart.length;
-}
-
-function renderCartPanel() {
-  const itemsEl = document.getElementById('cartItems');
-  const summaryEl = document.getElementById('cartSummary');
-  if (!itemsEl) return;
-
-  if (!NOCTURNE.cart.length) {
-    itemsEl.innerHTML = '<p class="cart-empty" id="cartEmpty">Tu carrito está vacío. Descubre una pieza que te espere.</p>';
-    if (summaryEl) summaryEl.hidden = true;
-    return;
-  }
-
-  const grouped = [];
-  NOCTURNE.cart.forEach((p) => {
-    const existing = grouped.find((g) => g.id === p.id);
-    if (existing) existing.qty += 1;
-    else grouped.push({ ...p, qty: 1 });
-  });
-
-  itemsEl.innerHTML = grouped.map((p) => `
-    <div class="cart-item" data-id="${p.id}">
-      <img src="${p.imgA}" alt="${p.name}" loading="lazy" onerror="this.style.visibility='hidden'">
-      <div>
-        <p class="cart-item-name">${p.name}</p>
-        <p class="cart-item-meta">${p.collection} · ${p.material} · Cant. ${p.qty}</p>
-        <p class="cart-item-price">${priceLabel(p)}</p>
-      </div>
-      <button class="cart-item-remove" data-remove="${p.id}">Quitar</button>
-    </div>`).join('');
-
-  itemsEl.querySelectorAll('[data-remove]').forEach((btn) => {
-    btn.addEventListener('click', () => removeFromCart(btn.dataset.remove));
-  });
-
-  if (summaryEl) {
-    summaryEl.hidden = false;
-    const anyPriced = grouped.some((p) => p.price);
-    document.getElementById('cartSubtotal').textContent = anyPriced
-      ? `$${grouped.reduce((sum, p) => sum + (p.price || 0) * p.qty, 0).toLocaleString('es')}`
-      : '[AGREGAR PRECIO]';
-  }
-}
-
-function initCartDrawer() {
-  const toggle = document.getElementById('cartToggle');
-  const panel = document.getElementById('cartPanel');
-  const closeBtn = document.getElementById('cartClose');
-  const scrim = document.getElementById('cartScrim');
-  if (!toggle || !panel) return;
-
-  const open = () => {
-    panel.classList.add('is-open');
-    panel.removeAttribute('inert');
-    scrim.classList.add('is-open');
-  };
-  const close = () => {
-    panel.classList.remove('is-open');
-    panel.setAttribute('inert', '');
-    scrim.classList.remove('is-open');
-  };
-
-  toggle.addEventListener('click', open);
-  closeBtn.addEventListener('click', close);
-  scrim.addEventListener('click', close);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && panel.classList.contains('is-open')) close();
-  });
-
-  document.getElementById('cartCheckout')?.addEventListener('click', () => {
-    showToast('Checkout de demostración — [PENDIENTE: integrar pasarela de pago]');
-  });
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-  toast.textContent = msg;
-  toast.classList.add('is-visible');
-  clearTimeout(NOCTURNE._toastTimer);
-  NOCTURNE._toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   initFilterTabs();
   initFilterPanelLogic();
-  initCartDrawer();
   document.getElementById('modalClose')?.addEventListener('click', closeProductModal);
   document.getElementById('productModal')?.addEventListener('click', (e) => {
     if (e.target.id === 'productModal') closeProductModal();

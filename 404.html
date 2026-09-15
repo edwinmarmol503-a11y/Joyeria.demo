@@ -61,8 +61,15 @@
 <div class="grain-overlay" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 
+<div class="page-transition" id="pageTransition" aria-hidden="true">
+  <svg class="page-transition-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M12 2 L19 9 L12 22 L5 9 Z"/><path d="M5 9 H19"/><path d="M9 2 L12 9 L15 2"/>
+  </svg>
+  <p class="page-transition-word">Nocturne</p>
+</div>
+
 <nav class="error-nav">
-  <a href="./">NOCTURNE</a>
+  <a href="./index.html">NOCTURNE</a>
 </nav>
 
 <main class="error-page">
@@ -99,10 +106,11 @@
   <p class="error-sub">El enlace que seguiste se perdió en la oscuridad. Vuelve a la vitrina principal y sigue explorando.</p>
 
   <div class="error-actions">
-    <a href="./" class="btn btn-gold">Volver al Inicio</a>
-    <a href="./#productos" class="btn btn-line">Ver Colección</a>
+    <a href="./index.html" class="btn btn-gold">Volver al Inicio</a>
+    <a href="./colecciones.html" class="btn btn-line">Ver Colección</a>
   </div>
 </main>
 
+<script src="js/transitions.js"></script>
 </body>
 </html>
